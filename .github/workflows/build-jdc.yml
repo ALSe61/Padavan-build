@@ -50,12 +50,12 @@ jobs:
         KERNEL: 4.4
         CONFIG_FILE: MI-R3P.config
       run: |
+        mv -f $CONFIG_FILE /opt/rt-n56u/trunk/configs/templates/$TNAME.config
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
         echo "configs/templates/$TNAME.config not found "
         exit 1
         fi
-        mv -f $CONFIG_FILE /opt/rt-n56u/trunk/configs/templates/$TNAME.config
         cp -f configs/templates/$TNAME.config .config
         sudo ./clear_tree
         sudo ./build_firmware_modify $TNAME 0
